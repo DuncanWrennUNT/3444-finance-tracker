@@ -1,0 +1,198 @@
+{% extends "layouts/base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block title %}
+Home | Finance Tracker
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <span class="eyebrow">
+                Take control of your finances
+            </span>
+
+            <h1>
+                Track your money.
+                <br>
+                Plan your future.
+            </h1>
+
+            <p>
+                Finance Tracker gives you a simple way to monitor
+                your spending, manage your budget, track your savings,
+                and understand where your money is going.
+            </p>
+
+            <div class="hero-actions">
+
+                <a class="button button-primary" href="{{ url_for('register') }}">
+                    Get Started
+                </a>
+
+                <a class="button button-secondary" href="{{ url_for('login') }}">
+                    Log In
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-preview">
+
+            <div class="preview-card">
+
+                <div class="preview-header">
+                    <span>Monthly Overview</span>
+                    <span>October</span>
+                </div>
+
+                <div class="preview-balance">
+
+                    <span class="preview-label">
+                        Current Balance
+                    </span>
+
+                    <h2>$2,438.65</h2>
+
+                </div>
+
+                <div class="preview-stats">
+
+                    <div>
+                        <span>Income</span>
+                        <strong>$1,850.00</strong>
+                    </div>
+
+                    <div>
+                        <span>Expenses</span>
+                        <strong>$612.37</strong>
+                    </div>
+
+                    <div>
+                        <span>Savings Rate</span>
+                        <strong>32%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">
+            Everything in one place
+        </span>
+
+        <h2>
+            Understand your finances at a glance.
+        </h2>
+
+        <p>
+            Keep track of the information that matters most without
+            making personal finance unnecessarily complicated.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                $
+            </div>
+
+            <h3>
+                Track Transactions
+            </h3>
+
+            <p>
+                Record your income and expenses, organize transactions
+                by category, and keep your financial history in one place.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                %
+            </div>
+
+            <h3>
+                Manage Budgets
+            </h3>
+
+            <p>
+                Create spending budgets and see how your actual expenses
+                compare with your financial goals.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon">
+                ↑
+            </div>
+
+            <h3>
+                Build Your Savings
+            </h3>
+
+            <p>
+                Set savings goals and monitor your progress as your
+                financial habits change over time.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="home-cta">
+
+    <div class="home-cta-content">
+
+        <h2>
+            Ready to start tracking?
+        </h2>
+
+        <p>
+            Create an account and start building a clearer picture
+            of your finances.
+        </p>
+
+        <a class="button button-primary" href="{{ url_for('register') }}">
+            Create an Account
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
