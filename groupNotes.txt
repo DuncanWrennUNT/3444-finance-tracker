@@ -1,7 +1,7 @@
 Finance Tracker Group Notes
 
-Figured I would give a quick overview of how to setup, run, and contribute,
-just in case you're unfamiliar with a Flask environment.
+Figured I would give a quick overview of how to setup, run, and contribute
+to the project, just in case you're unfamiliar with a Flask environment.
 
 ----------------------------------------------------------------------------
 
@@ -35,7 +35,8 @@ pip install -r requirements.txt
 You only need to create the virtual environment the first time. After that,
 just activate it whenever you work on the project.
 
-DO NOT commit the venv folder to GitHub. (I already added the venv/ file name in the .gitignore)
+DO NOT commit the venv folder to GitHub. (I already added .venv/ and 
+venv/ to .gitignore)
 
 Make sure the virtual environment is activated.
 
@@ -150,7 +151,7 @@ Example:
 
 @app.route("/login")
 def login():
-return render_template("auth/login.html")
+    return render_template("auth/login.html")
 
 This means:
 
@@ -325,13 +326,14 @@ If you are unsure where something belongs, please notify the GroupMe chat before
 creating a completely new structure.
 
 The main goal is to keep the project organized so everyone can work on separate
-features without everything ending up inside app.py, global.css, or one templates folder.
+features without everything ending up inside app.py, global.css, or one templates
+folder.
 
 ----------------------------------------------------------------------------
 
 11. Additional Info
 
-If you need any help or additional explanation, please feel free to reach out to me
-on GroupMe, Outlook, or my personal number.
+If you need any help or additional explanation, please feel free to reach out 
+to me on GroupMe, Outlook, or my personal number.
 
 ~ Grant
