@@ -261,7 +261,7 @@ Then:
 git status
 git add .
 git commit -m "Describe what you changed"
-git push
+git push origin main (or if you're working in a branch - git push origin branchName)
 
 Please try to use meaningful commit messages.
 
