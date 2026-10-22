@@ -1,6 +1,6 @@
 # Financial Tracker
 
-A web-based personal finance application being developed for **CSCE 3444 – Software Engineering** by **The Regal Eagles**.
+A web based personal finance application being developed for **CSCE 3444 – Software Engineering** by **The Regal Eagles**.
 
 ## Team
 
@@ -51,6 +51,8 @@ Parent accounts will have management access to linked child accounts, while chil
 
 ## Project Status
 
-**Early Development**
+**Active Development**
 
-The project requirements and overall structure have been established, and development is ready to begin.
+The core Flask project structure has been established, and the public homepage, shared layouts, partials, and styling have been implemented. The project repository is now set up for group development.
+
+Current development is focused on building the authentication system, including login and registration, followed by the SQLite database and dashboard functionality.
