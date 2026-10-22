@@ -1,0 +1,337 @@
+Finance Tracker Group Notes
+
+Figured I would give a quick overview of how to setup, run, and contribute,
+just in case you're unfamiliar with a Flask environment.
+
+----------------------------------------------------------------------------
+
+1. First Time Setup
+
+After cloning or pulling the repo, open a terminal inside the project folder.
+
+Create a virtual environment:
+
+Mac/Linux:
+python3 -m venv venv
+
+Windows:
+python -m venv venv
+
+Activate the virtual environment:
+
+Mac/Linux:
+source venv/bin/activate
+
+Windows Command Prompt:
+venv\Scripts\activate
+
+Windows PowerShell:
+venv\Scripts\Activate.ps1
+
+Install the required packages:
+
+pip install -r requirements.txt
+
+You only need to create the virtual environment the first time. After that,
+just activate it whenever you work on the project.
+
+DO NOT commit the venv folder to GitHub. (I already added the venv/ file name in the .gitignore)
+
+Make sure the virtual environment is activated.
+
+Then run:
+
+python app.py
+
+Depending on your computer, you may need:
+
+python3 app.py
+
+Flask should display something similar to:
+
+Running on http://127.0.0.1:5000
+
+Open that address in your browser.
+
+To stop the Flask server, press:
+
+Ctrl + C
+
+----------------------------------------------------------------------------
+
+2. Understanding the layout
+
+app.py
+This is the main Flask application and routes. Routes are things like /login, /register, 
+and eventually /dashboard. I explained routing more thoroughly in Step 4.
+
+templates/
+Contains all HTML/Jinja templates.
+
+layouts/
+    base.html
+        This is the main layout used by the rest of the website.
+
+partials/
+    Reusable HTML sections such as the navbar and footer.
+
+public/
+    Public pages such as the homepage.
+
+auth/
+    Login, registration, and other authentication pages.
+
+dashboard/
+    Dashboard-related pages.
+
+static/
+Contains files that do not need to be rendered by Flask.
+
+css/
+    global.css
+        Styling shared across the whole website.
+
+    home.css
+        Styling used only by the homepage.
+
+js/
+    JavaScript files will go here.
+
+images/
+    Images and other visual assets go here.
+
+Do not place every HTML file directly inside templates/.
+
+Put the page into the folder that matches its purpose.
+
+Examples:
+
+Login page:
+templates/auth/login.html
+
+Register page:
+templates/auth/register.html
+
+Dashboard:
+templates/dashboard/dashboard.html
+
+----------------------------------------------------------------------------
+
+3. Adding a page
+
+A page should normally extend the main layout with Jinja (Flask's template engine):
+
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Page Name | Finance Tracker
+{% endblock %}
+
+{% block content %}
+
+Page HTML goes here.
+
+{% endblock %}
+
+If a page needs its own CSS file, add:
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/example.css') }}">
+{% endblock %}
+
+----------------------------------------------------------------------------
+
+4. Routing
+
+Routes tell Flask what page to display for a URL.
+
+Example:
+
+@app.route("/login")
+def login():
+return render_template("auth/login.html")
+
+This means:
+
+http://127.0.0.1:5000/login
+
+will render:
+
+templates/auth/login.html
+
+----------------------------------------------------------------------------
+
+5. Linking Pages
+
+When linking between Flask pages in HTML, use url_for() instead of manually typing URLs.
+
+Example:
+
+<a href="{{ url_for('login') }}">Login</a>
+
+Instead of:
+
+<a href="/login">Login</a>
+
+----------------------------------------------------------------------------
+
+6. Styling pages with CSS
+
+Use:
+
+static/css/global.css
+
+for styling that is shared across multiple pages, such as:
+
+- Colors
+- Fonts
+- Navbar
+- Footer
+- Buttons
+- General page layout
+
+Use separate CSS files for individual pages when possible.
+
+Examples:
+
+- home.css
+- auth.css
+- dashboard.css
+
+Do not put every style in global.css.
+
+----------------------------------------------------------------------------
+
+7. Partials
+
+Partials are reusable HTML components that almost every page uses.
+
+Current examples:
+
+templates/partials/_navbar.html
+templates/partials/_footer.html
+
+They are included inside base.html using:
+
+{% include "partials/_navbar.html" %}
+
+If something is used on several pages, consider making it a partial instead 
+of copying the same HTML everywhere.
+
+base.html is the main layout for the website.
+
+Most pages should extend:
+
+templates/layouts/base.html
+
+This keeps shared elements such as:
+
+- Navbar
+- Footer
+- Global CSS
+- Page structure
+
+consistent across the site.
+
+Avoid copying the navbar or footer directly into individual pages.
+
+----------------------------------------------------------------------------
+
+8. Git
+
+Always pull the newest version of the repository before making changes:
+
+git pull
+
+If requirements.txt has changed, run:
+
+pip install -r requirements.txt
+
+Then start working.
+
+Make sure the application still starts:
+
+python app.py
+
+Check the pages you changed in the browser.
+
+Then:
+
+git status
+git add .
+git commit -m "Describe what you changed"
+git push
+
+Please try to use meaningful commit messages.
+
+Good:
+git commit -m "Add login page layout"
+
+Bad:
+git commit -m "stuff"
+
+The .gitignore should prevent these from being uploaded:
+
+venv/
+.venv/
+__pycache__/
+.env
+*.pyc
+.DS_Store
+
+Do not remove these entries from .gitignore.
+
+----------------------------------------------------------------------------
+
+9. Database queries
+
+The SQLite database has not been fully implemented yet.
+
+The database will eventually store things such as:
+
+- Users
+- Accounts
+- Transactions
+- Categories
+- Budgets
+- Savings goals
+- Parent/child account relationships
+
+It will need to be populated within our application using Python. We can worry
+about that when we get there, but before changing the database structure, please 
+communicate with the group so we don't end up with incompatible versions of 
+the schema.
+
+----------------------------------------------------------------------------
+
+10. Planned Application Reminder
+
+The planned application includes:
+
+- User registration and login
+- Password recovery
+- Transaction creation/editing/deletion
+- Income and expense categories
+- Budget creation and tracking
+- Savings goals
+- Financial dashboard
+- Income and expense summaries
+- Spending visualizations
+- Weekly, biweekly, monthly, quarterly, and yearly views
+- Parent and child account permissions
+
+If you are unsure where something belongs, please notify the GroupMe chat before 
+creating a completely new structure.
+
+The main goal is to keep the project organized so everyone can work on separate
+features without everything ending up inside app.py, global.css, or one templates folder.
+
+----------------------------------------------------------------------------
+
+11. Additional Info
+
+If you need any help or additional explanation, please feel free to reach out to me
+on GroupMe, Outlook, or my personal number.
+
+~ Grant
