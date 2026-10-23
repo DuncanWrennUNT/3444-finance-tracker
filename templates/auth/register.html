@@ -75,20 +75,38 @@ Register | Finance Tracker
                     <div class="form-group">
                         <label for="name" class="form-label">Full Name</label>
                         <input type="text" id="name" name="name" class="form-input" placeholder="John Doe"
-                            autocomplete="name" required>
+                            autocomplete="name" maxlength="80" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-input" placeholder="johndoe@gmail.com"
-                            autocomplete="email" required>
+                            autocomplete="email" maxlength="254" required>
                     </div>
 
                     <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-input" placeholder="johndoe"
+                            autocomplete="username" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+"
+                            aria-describedby="username-help" required>
+                        <span class="form-help" id="username-help">Use 3–30 letters, numbers, or underscores.</span>
+                    </div>
+
+                    <div class="form-group password-group">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" id="password" name="password" class="form-input" placeholder="••••••••"
-                            autocomplete="new-password" minlength="8" aria-describedby="password-help" required>
-                        <span class="form-help" id="password-help">Use at least 8 characters.</span>
+                            autocomplete="new-password" minlength="9" maxlength="128"
+                            pattern="(?=.*[0-9])(?=.*[^A-Za-z0-9\s]).{9,}" aria-describedby="password-requirements"
+                            required>
+
+                        <div class="password-requirements" id="password-requirements" aria-live="polite">
+                            <strong>Your password must include:</strong>
+                            <ul>
+                                <li data-requirement="length">At least 9 characters</li>
+                                <li data-requirement="number">At least one number</li>
+                                <li data-requirement="special">At least one special character</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="checkbox-group">
@@ -116,5 +134,7 @@ Register | Finance Tracker
     </div>
 
 </section>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}" defer></script>
 
 {% endblock %}
