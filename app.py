@@ -9,12 +9,12 @@ def home():
 
 @app.route("/login")
 def login():
-    return "<h1>Login page coming next.</h1>"
+    return "<h1>Login page coming soon.</h1>"
 
 
 @app.route("/register")
 def register():
-    return "<h1>Register page coming next.</h1>"
+    return render_template("auth/register.html")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,120 @@
+{% extends "layouts/base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block title %}
+Register | Finance Tracker
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-container">
+
+    <div class="auth-grid">
+
+        <div class="auth-grid__left">
+
+            <div class="auth-intro">
+                <span class="eyebrow">A clearer financial future</span>
+
+                <h1>Everything you need to make your money make sense.</h1>
+
+                <p>
+                    Create your account to bring your spending, budgets,
+                    and savings goals together in one simple place.
+                </p>
+            </div>
+
+            <div class="auth-info-box">
+
+                <article class="ibox">
+                    <div class="ibox-icon" aria-hidden="true">$</div>
+
+                    <div>
+                        <h3>See where your money goes</h3>
+                        <p>Organize income and expenses to understand your everyday spending.</p>
+                    </div>
+                </article>
+
+                <article class="ibox">
+                    <div class="ibox-icon" aria-hidden="true">%</div>
+
+                    <div>
+                        <h3>Stay on top of your budget</h3>
+                        <p>Compare your spending with the limits you set for each category.</p>
+                    </div>
+                </article>
+
+                <article class="ibox">
+                    <div class="ibox-icon" aria-hidden="true">↑</div>
+
+                    <div>
+                        <h3>Make progress toward your goals</h3>
+                        <p>Track your savings over time and keep your next milestone in view.</p>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+
+        <div class="auth-grid__right">
+
+            <div class="auth-form-card">
+
+                <div class="auth-form-heading">
+                    <span class="eyebrow">Get started</span>
+                    <h2>Create your account</h2>
+                    <p>Enter your information below to start tracking your finances.</p>
+                </div>
+
+                <form action="#" method="POST">
+
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe"
+                            autocomplete="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="johndoe@gmail.com"
+                            autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="••••••••"
+                            autocomplete="new-password" minlength="8" aria-describedby="password-help" required>
+                        <span class="form-help" id="password-help">Use at least 8 characters.</span>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#">Terms of Service</a> and
+                            <a href="#">Privacy Policy</a>.
+                        </label>
+                    </div>
+
+                    <button class="button button-primary auth-submit" type="submit">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
